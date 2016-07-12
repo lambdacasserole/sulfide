@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Xml;
 
 using ICSharpCode.AvalonEdit.Highlighting;
@@ -9,8 +10,14 @@ namespace Sulfide
     /// <summary>
     /// Provides convenient methods for loading syntax highlighting schemes for various languages.
     /// </summary>
-    class SyntaxHighlightingLoader
+    public class SyntaxHighlightingLoader
     {
+        /// <summary>
+        /// Cache loaded highlighting schemes.
+        /// </summary>
+        private static readonly Dictionary<string, IHighlightingDefinition> Cached
+            = new Dictionary<string, IHighlightingDefinition>();
+
         /// <summary>
         /// Loads a syntax highlighting definition by name and returns it.
         /// </summary>
@@ -18,8 +25,17 @@ namespace Sulfide
         /// <returns></returns>
         private static IHighlightingDefinition LoadHighlightingDefinition(string name)
         {
-            var reader = new XmlTextReader(new FileStream($"xshd/{name}.xshd", FileMode.Open));
-            return HighlightingLoader.Load(reader, HighlightingManager.Instance);
+            // Load new scheme and add to cache.
+            if (!Cached.ContainsKey(name))
+            {
+                var filename = $"xshd/{name}.xshd";
+                var reader = new XmlTextReader(new FileStream(filename, FileMode.Open));
+                var loaded = HighlightingLoader.Load(reader, HighlightingManager.Instance);
+                reader.Close();
+                Cached.Add(name, loaded);
+            }
+            
+            return Cached[name];
         }
 
         /// <summary>

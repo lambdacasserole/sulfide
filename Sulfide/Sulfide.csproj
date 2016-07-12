@@ -112,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\folder-horizontal-open.png" />
     <None Include="Resources\disk.png" />
     <None Include="Resources\document.png" />
   </ItemGroup>

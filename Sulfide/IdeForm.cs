@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -48,10 +49,12 @@ namespace Sulfide
         /// <summary>
         /// Opens a new code document.
         /// </summary>
-        public void NewCodeDocument()
+        public CodeDocument NewCodeDocument()
         {
             var defaultCodeDocument = new CodeDocument { Text = GetNewTabText() };
             OpenDocument(defaultCodeDocument);
+
+            return defaultCodeDocument; // We might want to work with this.
         }
 
         /// <summary>
@@ -73,6 +76,28 @@ namespace Sulfide
             _documents.Remove(document);
             document.Close();
         }
+
+        public void OpenFile()
+        {
+            var dialog = new OpenFileDialog()
+            {
+                Title = "Open File...",
+                Filter = "All Files (*.*)|*.*",
+                Multiselect = true,
+            };
+            var result = dialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                var files = dialog.FileNames.ToDictionary(str => str, str => File.ReadAllText(str));
+                foreach (var file in files)
+                {
+                    var t = NewCodeDocument();
+                    t.OpenFilePath = file.Key;
+                    t.Editor.Text = file.Value;
+                }
+            }
+    }
 
         private void EnableDisableMenuOptions()
         {
@@ -121,6 +146,16 @@ namespace Sulfide
         private void newToolStripButton_Click(object sender, EventArgs e)
         {
             NewCodeDocument();
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFile();
+        }
+
+        private void openToolStripButton_Click(object sender, EventArgs e)
+        {
+            OpenFile();
         }
     }
 }
