@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.IO;
+using System.Windows.Forms;
 using System.Windows.Forms.Integration;
 using System.Windows.Media;
 
@@ -10,13 +11,25 @@ namespace Sulfide
 {
     public class CodeDocument : DockContent, IDocument
     {
-        private readonly TextEditor _codeEditor;
+        private string _openFilePath;
+
+        public TextEditor Editor { get; }
+
+        public string OpenFilePath
+        {
+            get { return _openFilePath; }
+            set
+            {
+                _openFilePath = value;
+                Text = Path.GetFileName(_openFilePath);
+            }
+        }
 
         public CodeDocument()
         {
             var host = new ElementHost {Dock = DockStyle.Fill};
 
-            _codeEditor = new TextEditor
+            Editor = new TextEditor
             {
                 ShowLineNumbers = true,
                 FontFamily = new FontFamily("Consolas"),
@@ -24,8 +37,12 @@ namespace Sulfide
                 SyntaxHighlighting = SyntaxHighlightingLoader.LoadBooHighlightingDefinition()
             };
 
-            host.Child = _codeEditor;
+            host.Child = Editor;
             Controls.Add(host);
+
+            SaveStrategy = new CodeDocumentSaveStrategy(this);
         }
+
+        public ISaveStrategy SaveStrategy { get; }
     }
 }

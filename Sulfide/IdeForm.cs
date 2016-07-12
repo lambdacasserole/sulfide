@@ -46,6 +46,15 @@ namespace Sulfide
             document.Close();
         }
 
+        private void EnableDisableMenuOptions()
+        {
+            // Enable or disable save.
+            var saveEnabled = ActiveDocument?.SaveStrategy != null;
+            saveAsToolStripMenuItem.Enabled = saveEnabled;
+            saveToolStripButton.Enabled = saveEnabled;
+            saveToolStripMenuItem.Enabled = saveEnabled;
+        }
+
         private void IdeForm_Load(object sender, EventArgs e)
         {
             // Customize theme and apply to docking system.
@@ -55,6 +64,26 @@ namespace Sulfide
             // Open default code document.
             var defaultCodeDocument = new CodeDocument {Text = "New File 1"};
             OpenDocument(defaultCodeDocument);
+        }
+
+        private void ideDockingPanel_ActiveContentChanged(object sender, EventArgs e)
+        {
+            EnableDisableMenuOptions();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActiveDocument.SaveStrategy.Save();
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActiveDocument.SaveStrategy.SaveAs();
+        }
+
+        private void saveToolStripButton_Click(object sender, EventArgs e)
+        {
+            ActiveDocument.SaveStrategy.Save();
         }
     }
 }
