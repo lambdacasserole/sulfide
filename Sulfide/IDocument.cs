@@ -16,6 +16,8 @@ namespace Sulfide
     {
         ISaveStrategy SaveStrategy { get; }
 
+        string Text { get; set; }
+
         void Show(DockPanel dockPanel, DockState dockState);
 
         void Close();

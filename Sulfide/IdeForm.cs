@@ -9,6 +9,8 @@ namespace Sulfide
 {
     public partial class IdeForm : Form
     {
+        private const string NewTabText = "New File";
+
         private readonly List<IDocument> _documents;
 
         public IdeForm()
@@ -24,6 +26,32 @@ namespace Sulfide
         public IDocument ActiveDocument
         {
             get { return _documents.FirstOrDefault(doc => doc == ideDockingPanel.ActiveDocument); }
+        }
+
+        /// <summary>
+        /// Gets suitable tab text for a new code document.
+        /// </summary>
+        /// <returns></returns>
+        private string GetNewTabText()
+        {
+            // Find unused tab number.
+            var i = 1;
+            while (_documents.Any(doc => doc.Text == $"{NewTabText} {i}"))
+            {
+                i++;
+            }
+
+            // Return tab text.
+            return $"{NewTabText} {i}";
+        }
+
+        /// <summary>
+        /// Opens a new code document.
+        /// </summary>
+        public void NewCodeDocument()
+        {
+            var defaultCodeDocument = new CodeDocument { Text = GetNewTabText() };
+            OpenDocument(defaultCodeDocument);
         }
 
         /// <summary>
@@ -62,8 +90,7 @@ namespace Sulfide
             ideDockingPanel.Theme = theme;
 
             // Open default code document.
-            var defaultCodeDocument = new CodeDocument {Text = "New File 1"};
-            OpenDocument(defaultCodeDocument);
+            NewCodeDocument();
         }
 
         private void ideDockingPanel_ActiveContentChanged(object sender, EventArgs e)
@@ -84,6 +111,16 @@ namespace Sulfide
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
             ActiveDocument.SaveStrategy.Save();
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewCodeDocument();
+        }
+
+        private void newToolStripButton_Click(object sender, EventArgs e)
+        {
+            NewCodeDocument();
         }
     }
 }
