@@ -18,6 +18,8 @@ namespace Sulfide
 
         IClipboardStrategy ClipboardStrategy { get; }
 
+        IPrintingStrategy PrintingStrategy { get; }
+
         string Text { get; set; }
 
         void Show(DockPanel dockPanel, DockState dockState);

@@ -42,10 +42,13 @@ namespace Sulfide
 
             SaveStrategy = new CodeDocumentSaveStrategy(this);
             ClipboardStrategy = new CodeDocumentClipboardStrategy(this);
+            PrintingStrategy = new CodeDocumentPrintingStrategy(this);
         }
 
         public ISaveStrategy SaveStrategy { get; }
 
         public IClipboardStrategy ClipboardStrategy { get; }
+
+        public IPrintingStrategy PrintingStrategy { get; }
     }
 }

@@ -115,6 +115,12 @@ namespace Sulfide
             cutToolStripMenuItem.Enabled = clipboardEnabled;
             copyToolStripMenuItem.Enabled = clipboardEnabled;
             pasteToolStripMenuItem.Enabled = clipboardEnabled;
+
+            // Enable or disable printing.
+            var printingEnabled = ActiveDocument?.PrintingStrategy != null;
+            printPreviewToolStripMenuItem.Enabled = printingEnabled;
+            printToolStripButton.Enabled = printingEnabled;
+            printToolStripMenuItem.Enabled = printingEnabled;
         }
 
         private void IdeForm_Load(object sender, EventArgs e)
