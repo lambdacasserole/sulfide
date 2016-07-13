@@ -120,12 +120,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\document-zoom.png" />
+    <None Include="Resources\document_zoom.png" />
     <None Include="Resources\printer.png" />
-    <None Include="Resources\clipboard-paste-document-text.png" />
-    <None Include="Resources\document-copy.png" />
+    <None Include="Resources\clipboard_paste_document_text.png" />
+    <None Include="Resources\document_copy.png" />
     <None Include="Resources\scissors.png" />
-    <None Include="Resources\folder-horizontal-open.png" />
+    <None Include="Resources\folder_horizontal_open.png" />
     <None Include="Resources\disk.png" />
     <None Include="Resources\document.png" />
   </ItemGroup>

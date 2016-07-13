@@ -65,7 +65,7 @@ namespace Sulfide.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap clipboard_paste_document_text {
             get {
-                object obj = ResourceManager.GetObject("clipboard-paste-document-text", resourceCulture);
+                object obj = ResourceManager.GetObject("clipboard_paste_document_text", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -95,7 +95,7 @@ namespace Sulfide.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap document_copy {
             get {
-                object obj = ResourceManager.GetObject("document-copy", resourceCulture);
+                object obj = ResourceManager.GetObject("document_copy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -105,7 +105,7 @@ namespace Sulfide.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap document_zoom {
             get {
-                object obj = ResourceManager.GetObject("document-zoom", resourceCulture);
+                object obj = ResourceManager.GetObject("document_zoom", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -115,18 +115,8 @@ namespace Sulfide.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap folder_horizontal_open {
             get {
-                object obj = ResourceManager.GetObject("folder-horizontal-open", resourceCulture);
+                object obj = ResourceManager.GetObject("folder_horizontal_open", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon logo {
-            get {
-                object obj = ResourceManager.GetObject("logo", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
             }
         }
         
