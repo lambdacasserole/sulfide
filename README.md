@@ -1,2 +1,2 @@
-# sulfide
-Super useful library framework for integrated development environments.
+# Sulfide
+Some useful libraries and frameworks for integrated development environments. 
