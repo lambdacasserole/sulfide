@@ -222,5 +222,20 @@ namespace Sulfide
         {
             ActiveDocument.HistoryStrategy.Redo();
         }
+
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActiveDocument.PrintingStrategy.Print();
+        }
+
+        private void printToolStripButton_Click(object sender, EventArgs e)
+        {
+            ActiveDocument.PrintingStrategy.Print();
+        }
+
+        private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActiveDocument.PrintingStrategy.PrintPreview();
+        }
     }
 }

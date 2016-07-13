@@ -72,6 +72,7 @@
     <Compile Include="CodeDocumentHistoryStrategy.cs" />
     <Compile Include="CodeDocumentPrintingStrategy.cs" />
     <Compile Include="CodeDocumentSaveStrategy.cs" />
+    <Compile Include="DocumentPrinter.cs" />
     <Compile Include="IClipboardStrategy.cs" />
     <Compile Include="IdeForm.cs">
       <SubType>Form</SubType>

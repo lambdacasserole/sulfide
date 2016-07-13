@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Forms;
 
 namespace Sulfide
 {
@@ -25,7 +28,21 @@ namespace Sulfide
 
         public void Print()
         {
-            throw new NotImplementedException();
+            // Show print dialog.
+            var dialog = new System.Windows.Controls.PrintDialog();
+            if (dialog.ShowDialog() != true)
+            {
+                return;
+            }
+
+            // Adjust document according to dialog.
+            var flowDocument = DocumentPrinter.CreateFlowDocumentForEditor(_codeDocument.Editor);
+            flowDocument.PageHeight = dialog.PrintableAreaHeight;
+            flowDocument.PageWidth = dialog.PrintableAreaWidth;
+
+
+            var printable = (IDocumentPaginatorSource) flowDocument;
+            dialog.PrintDocument(printable.DocumentPaginator, _codeDocument.Text);
         }
     }
 }
