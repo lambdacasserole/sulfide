@@ -45,17 +45,7 @@ namespace Sulfide
             var paragraph = new Paragraph();
             foreach (var line in document.Lines)
             {
-                var lineNumber = line.LineNumber;
-                var inlineBuilder = new HighlightedInlineBuilder(document.GetText(line));
-                if (highlighter != null)
-                {
-                    var highlightedLine = highlighter.HighlightLine(lineNumber);
-                    var lineStartOffset = line.Offset;
-                    foreach (var section in highlightedLine.Sections)
-                    {
-                        inlineBuilder.SetHighlighting(section.Offset - lineStartOffset, section.Length, section.Color);
-                    }
-                }
+                var inlineBuilder = highlighter.HighlightLine(line.LineNumber).ToRichText();
                 paragraph.Inlines.AddRange(inlineBuilder.CreateRuns());
                 paragraph.Inlines.Add(new LineBreak());
             }

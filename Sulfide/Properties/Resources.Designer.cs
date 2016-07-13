@@ -121,6 +121,23 @@ namespace Sulfide.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;Window
+        ///        xmlns                 =&apos;http://schemas.microsoft.com/netfx/2007/xaml/presentation&apos;
+        ///        xmlns:x               =&apos;http://schemas.microsoft.com/winfx/2006/xaml&apos;
+        ///        Title                 =&apos;Print Preview - @@TITLE&apos;
+        ///        Height                =&apos;200&apos;
+        ///        Width                 =&apos;300&apos;
+        ///        WindowStartupLocation =&apos;CenterOwner&apos;&gt;
+        ///        &lt;DocumentViewer Name=&apos;dv1&apos;/&gt;
+        ///     &lt;/Window&gt;.
+        /// </summary>
+        internal static string PreviewWindowXaml {
+            get {
+                return ResourceManager.GetString("PreviewWindowXaml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap printer {
