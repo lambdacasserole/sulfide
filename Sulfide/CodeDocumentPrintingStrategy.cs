@@ -51,9 +51,8 @@ namespace Sulfide
                 using (var doc = new XpsDocument(tempFileName, FileAccess.Read))
                 {
                     var fixedDocumentSequence = doc.GetFixedDocumentSequence();
-
-                    var title = $"Print Preview {_codeDocument.Text}";
-                    var source = Properties.Resources.PreviewWindowXaml.Replace("@@TITLE", title);
+                    
+                    var source = Properties.Resources.PreviewWindowXaml.Replace("@@TITLE", _codeDocument.Text);
 
                     using (var reader = new XmlTextReader(new StringReader(source)))
                     {
