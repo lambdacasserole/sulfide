@@ -68,7 +68,9 @@
     <Compile Include="CodeDocument.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CodeDocumentClipboardStrategy.cs" />
     <Compile Include="CodeDocumentSaveStrategy.cs" />
+    <Compile Include="IClipboardStrategy.cs" />
     <Compile Include="IdeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +114,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\clipboard-paste-document-text.png" />
+    <None Include="Resources\document-copy.png" />
+    <None Include="Resources\scissors.png" />
     <None Include="Resources\folder-horizontal-open.png" />
     <None Include="Resources\disk.png" />
     <None Include="Resources\document.png" />

@@ -106,6 +106,15 @@ namespace Sulfide
             saveAsToolStripMenuItem.Enabled = saveEnabled;
             saveToolStripButton.Enabled = saveEnabled;
             saveToolStripMenuItem.Enabled = saveEnabled;
+
+            // Enable or disable clipboard.
+            var clipboardEnabled = ActiveDocument?.ClipboardStrategy != null;
+            cutToolStripButton.Enabled = clipboardEnabled;
+            copyToolStripButton.Enabled = clipboardEnabled;
+            pasteToolStripButton.Enabled = clipboardEnabled;
+            cutToolStripMenuItem.Enabled = clipboardEnabled;
+            copyToolStripMenuItem.Enabled = clipboardEnabled;
+            pasteToolStripMenuItem.Enabled = clipboardEnabled;
         }
 
         private void IdeForm_Load(object sender, EventArgs e)
@@ -156,6 +165,36 @@ namespace Sulfide
         private void openToolStripButton_Click(object sender, EventArgs e)
         {
             OpenFile();
+        }
+
+        private void cutToolStripButton_Click(object sender, EventArgs e)
+        {
+            ActiveDocument.ClipboardStrategy.Cut();
+        }
+
+        private void copyToolStripButton_Click(object sender, EventArgs e)
+        {
+            ActiveDocument.ClipboardStrategy.Copy();
+        }
+
+        private void pasteToolStripButton_Click(object sender, EventArgs e)
+        {
+            ActiveDocument.ClipboardStrategy.Paste();
+        }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActiveDocument.ClipboardStrategy.Cut();
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActiveDocument.ClipboardStrategy.Copy();
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActiveDocument.ClipboardStrategy.Paste();
         }
     }
 }

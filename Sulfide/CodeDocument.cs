@@ -41,8 +41,11 @@ namespace Sulfide
             Controls.Add(host);
 
             SaveStrategy = new CodeDocumentSaveStrategy(this);
+            ClipboardStrategy = new CodeDocumentClipboardStrategy(this);
         }
 
         public ISaveStrategy SaveStrategy { get; }
+
+        public IClipboardStrategy ClipboardStrategy { get; }
     }
 }

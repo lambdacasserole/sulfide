@@ -6,7 +6,7 @@ namespace Sulfide
 {
     public class CodeDocumentSaveStrategy : ISaveStrategy
     {
-        private CodeDocument _codeDocument;
+        private readonly CodeDocument _codeDocument;
 
         public CodeDocumentSaveStrategy(CodeDocument codeDocument)
         {
@@ -29,7 +29,8 @@ namespace Sulfide
             }
             catch (Exception ex)
             {
-                // TODO: Show error message.
+                // TODO: Expand on this.
+                MessageBox.Show("There was a problem saving your file.");
             }
         }
 
