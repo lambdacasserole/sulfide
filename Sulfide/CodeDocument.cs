@@ -9,10 +9,16 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace Sulfide
 {
+    /// <summary>
+    /// Represents a document open in a code editor tab.
+    /// </summary>
     public class CodeDocument : DockContent, IDocument
     {
         private string _openFilePath;
 
+        /// <summary>
+        /// Gets the text editor containing the document.
+        /// </summary>
         public TextEditor Editor { get; }
 
         public string OpenFilePath
@@ -25,10 +31,21 @@ namespace Sulfide
             }
         }
 
+        public ISaveStrategy SaveStrategy { get; }
+
+        public IClipboardStrategy ClipboardStrategy { get; }
+
+        public IPrintingStrategy PrintingStrategy { get; }
+
+        /// <summary>
+        /// Initializes a new instance of a code document.
+        /// </summary>
         public CodeDocument()
         {
+            // The code editor is a WPF control that needs hosting.
             var host = new ElementHost {Dock = DockStyle.Fill};
 
+            // Initialize WPF code editor control.
             Editor = new TextEditor
             {
                 ShowLineNumbers = true,
@@ -37,18 +54,14 @@ namespace Sulfide
                 SyntaxHighlighting = SyntaxHighlightingLoader.LoadBooHighlightingDefinition()
             };
 
+            // Add to host and add host to control.
             host.Child = Editor;
             Controls.Add(host);
 
+            // Initialize strategies.
             SaveStrategy = new CodeDocumentSaveStrategy(this);
             ClipboardStrategy = new CodeDocumentClipboardStrategy(this);
             PrintingStrategy = new CodeDocumentPrintingStrategy(this);
         }
-
-        public ISaveStrategy SaveStrategy { get; }
-
-        public IClipboardStrategy ClipboardStrategy { get; }
-
-        public IPrintingStrategy PrintingStrategy { get; }
     }
 }
