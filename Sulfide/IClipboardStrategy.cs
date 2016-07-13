@@ -19,5 +19,10 @@
         /// Performs a paste action on the document.
         /// </summary>
         void Paste();
+
+        /// <summary>
+        /// Selects the entire contents of the document.
+        /// </summary>
+        void SelectAll();
     }
 }

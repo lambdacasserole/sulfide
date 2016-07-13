@@ -115,6 +115,7 @@ namespace Sulfide
             cutToolStripMenuItem.Enabled = clipboardEnabled;
             copyToolStripMenuItem.Enabled = clipboardEnabled;
             pasteToolStripMenuItem.Enabled = clipboardEnabled;
+            selectAllToolStripMenuItem.Enabled = clipboardEnabled;
 
             // Enable or disable printing.
             var printingEnabled = ActiveDocument?.PrintingStrategy != null;
@@ -236,6 +237,11 @@ namespace Sulfide
         private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ActiveDocument.PrintingStrategy.PrintPreview();
+        }
+
+        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActiveDocument.ClipboardStrategy.SelectAll();
         }
     }
 }

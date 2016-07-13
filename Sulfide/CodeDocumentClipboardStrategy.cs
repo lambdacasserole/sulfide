@@ -30,5 +30,10 @@
         {
             _codeDocument.Editor.Paste();
         }
+
+        public void SelectAll()
+        {
+            _codeDocument.Editor.SelectAll();
+        }
     }
 }
