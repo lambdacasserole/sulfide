@@ -115,7 +115,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="logo.ico" />
     <None Include="Resources\document-zoom.png" />
     <None Include="Resources\printer.png" />
     <None Include="Resources\clipboard-paste-document-text.png" />
@@ -124,6 +123,9 @@
     <None Include="Resources\folder-horizontal-open.png" />
     <None Include="Resources\disk.png" />
     <None Include="Resources\document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
