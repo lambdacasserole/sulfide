@@ -1,48 +1,65 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Documents;
+
 using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.Document;
 using ICSharpCode.AvalonEdit.Highlighting;
 
 namespace Sulfide
 {
+    /// <summary>
+    /// Contains useful static methods for preparing <see cref="TextEditor"/> documents for printing.
+    /// </summary>
     public static class DocumentPrinter
     {
-
+        /// <summary>
+        /// Produces a <see cref="FlowDocument"/> from a <see cref="TextEditor"/> instance.
+        /// </summary>
+        /// <param name="editor"></param>
+        /// <returns></returns>
         public static FlowDocument CreateFlowDocumentForEditor(TextEditor editor)
         {
-            IHighlighter highlighter = editor.TextArea.GetService(typeof(IHighlighter)) as IHighlighter;
-            FlowDocument doc = new FlowDocument(ConvertTextDocumentToBlock(editor.Document, highlighter));
-            doc.FontFamily = editor.FontFamily;
-            doc.FontSize = editor.FontSize;
+            var highlighter = editor.TextArea.GetService(typeof (IHighlighter)) as IHighlighter;
+            var doc = new FlowDocument(ConvertTextDocumentToBlock(editor.Document, highlighter))
+            {
+                FontFamily = editor.FontFamily,
+                FontSize = editor.FontSize
+            };
             return doc;
         }
 
 
+        /// <summary>
+        /// Produces a highlighted code block from a <see cref="TextDocument"/> instance.
+        /// </summary>
+        /// <param name="document">The document to produce the block from.</param>
+        /// <param name="highlighter">The highlighter to use.</param>
+        /// <returns></returns>
         public static Block ConvertTextDocumentToBlock(TextDocument document, IHighlighter highlighter)
         {
             if (document == null)
-                throw new ArgumentNullException("document");
-            Paragraph p = new Paragraph();
-            foreach (DocumentLine line in document.Lines)
             {
-                int lineNumber = line.LineNumber;
-                HighlightedInlineBuilder inlineBuilder = new HighlightedInlineBuilder(document.GetText(line));
+                throw new ArgumentNullException(nameof(document));
+            }
+
+            var paragraph = new Paragraph();
+            foreach (var line in document.Lines)
+            {
+                var lineNumber = line.LineNumber;
+                var inlineBuilder = new HighlightedInlineBuilder(document.GetText(line));
                 if (highlighter != null)
                 {
-                    HighlightedLine highlightedLine = highlighter.HighlightLine(lineNumber);
-                    int lineStartOffset = line.Offset;
-                    foreach (HighlightedSection section in highlightedLine.Sections)
+                    var highlightedLine = highlighter.HighlightLine(lineNumber);
+                    var lineStartOffset = line.Offset;
+                    foreach (var section in highlightedLine.Sections)
+                    {
                         inlineBuilder.SetHighlighting(section.Offset - lineStartOffset, section.Length, section.Color);
+                    }
                 }
-                p.Inlines.AddRange(inlineBuilder.CreateRuns());
-                p.Inlines.Add(new LineBreak());
+                paragraph.Inlines.AddRange(inlineBuilder.CreateRuns());
+                paragraph.Inlines.Add(new LineBreak());
             }
-            return p;
+            return paragraph;
         }
     }
 }
