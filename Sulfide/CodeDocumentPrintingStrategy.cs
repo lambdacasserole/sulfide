@@ -53,7 +53,8 @@ namespace Sulfide
                 {
                     // Create preview window, show XPS document in the window.
                     var preview = (Window) XamlReader.Load(reader);
-                    preview.Icon = new BitmapImage(new Uri(@"pack://application:,,,/Resources/logo.ico"));
+                    var icon = new BitmapImage(new Uri(@"pack://application:,,,/Resources/logo.png"));
+                    preview.Icon = icon;
                     var documentViewer = (DocumentViewer) LogicalTreeHelper.FindLogicalNode(preview,
                         "printPreviewDocumentViewer");
                     if (documentViewer != null)

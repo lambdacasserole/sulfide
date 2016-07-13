@@ -131,7 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
-    <Resource Include="Resources\logo.ico" />
+    <Resource Include="Resources\logo.png" />
     <None Include="Resources\PreviewWindowXaml.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
