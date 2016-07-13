@@ -121,15 +121,25 @@ namespace Sulfide.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;Window
-        ///        xmlns                 =&apos;http://schemas.microsoft.com/netfx/2007/xaml/presentation&apos;
-        ///        xmlns:x               =&apos;http://schemas.microsoft.com/winfx/2006/xaml&apos;
-        ///        Title                 =&apos;Print Preview - @@TITLE&apos;
-        ///        Height                =&apos;200&apos;
-        ///        Width                 =&apos;300&apos;
-        ///        WindowStartupLocation =&apos;CenterOwner&apos;&gt;
-        ///        &lt;DocumentViewer Name=&apos;dv1&apos;/&gt;
-        ///     &lt;/Window&gt;.
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon logo {
+            get {
+                object obj = ResourceManager.GetObject("logo", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;Window 
+        ///	xmlns=&quot;http://schemas.microsoft.com/netfx/2007/xaml/presentation&quot; 
+        ///	xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot; 
+        ///	Title=&quot;Print Preview - {{title}}&quot; 
+        ///	Height=&quot;200&quot; 
+        ///	Width=&quot;300&quot; 
+        ///	WindowStartupLocation=&quot;CenterOwner&quot;&gt;
+        ///	&lt;DocumentViewer Name=&quot;printPreviewDocumentViewer&quot;/&gt;
+        ///&lt;/Window&gt;.
         /// </summary>
         internal static string PreviewWindowXaml {
             get {

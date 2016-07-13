@@ -21,6 +21,9 @@ namespace Sulfide
         /// </summary>
         public TextEditor Editor { get; }
 
+        /// <summary>
+        /// Gets or sets the path of the file currently open in the editor.
+        /// </summary>
         public string OpenFilePath
         {
             get { return _openFilePath; }

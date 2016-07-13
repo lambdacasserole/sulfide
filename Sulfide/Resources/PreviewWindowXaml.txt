@@ -1,9 +1,9 @@
-<Window
-        xmlns                 ='http://schemas.microsoft.com/netfx/2007/xaml/presentation'
-        xmlns:x               ='http://schemas.microsoft.com/winfx/2006/xaml'
-        Title                 ='Print Preview - @@TITLE'
-        Height                ='200'
-        Width                 ='300'
-        WindowStartupLocation ='CenterOwner'>
-        <DocumentViewer Name='dv1'/>
-     </Window>
+<Window 
+	xmlns="http://schemas.microsoft.com/netfx/2007/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+	Title="Print Preview - {{title}}" 
+	Height="200" 
+	Width="300" 
+	WindowStartupLocation="CenterOwner">
+	<DocumentViewer Name="printPreviewDocumentViewer"/>
+</Window>

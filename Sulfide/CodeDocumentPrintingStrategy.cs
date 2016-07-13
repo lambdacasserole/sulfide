@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Markup;
-using System.Windows.Xps;
+using System.Windows.Media.Imaging;
 using System.Windows.Xps.Packaging;
 using System.Xml;
 
@@ -35,34 +35,36 @@ namespace Sulfide
             flowDocument.PagePadding = new Thickness(50);
             flowDocument.ColumnGap = 0;
             flowDocument.ColumnWidth = flowDocument.PageWidth;
-            
-            var tempFileName = Path.GetRandomFileName();
             var printable = (IDocumentPaginatorSource) flowDocument;
+
+            var tempFileName = Path.GetRandomFileName(); // Store XPS file at temporary path.
+
             try
             {
                 // Write XPS document to temporary file.
                 using (var doc = new XpsDocument(tempFileName, FileAccess.ReadWrite))
                 {
-                    XpsDocumentWriter writer = XpsDocument.CreateXpsDocumentWriter(doc);
+                    var writer = XpsDocument.CreateXpsDocumentWriter(doc);
                     writer.Write(printable.DocumentPaginator);
                 }
-
-                // Read XPS document into dynamically generated preview window.
-                using (var doc = new XpsDocument(tempFileName, FileAccess.Read))
+                // Customize window XAML with title of document.
+                var source = Properties.Resources.PreviewWindowXaml.Replace("{{title}}", _codeDocument.Text);
+                using (var reader = new XmlTextReader(new StringReader(source)))
                 {
-                    var fixedDocumentSequence = doc.GetFixedDocumentSequence();
-                    
-                    var source = Properties.Resources.PreviewWindowXaml.Replace("@@TITLE", _codeDocument.Text);
-
-                    using (var reader = new XmlTextReader(new StringReader(source)))
+                    // Create preview window, show XPS document in the window.
+                    var preview = (Window) XamlReader.Load(reader);
+                    preview.Icon = new BitmapImage(new Uri(@"pack://application:,,,/Resources/logo.ico"));
+                    var documentViewer = (DocumentViewer) LogicalTreeHelper.FindLogicalNode(preview,
+                        "printPreviewDocumentViewer");
+                    if (documentViewer != null)
                     {
-                        var preview = (Window) XamlReader.Load(reader);
-
-                        var documentViewer = (DocumentViewer) LogicalTreeHelper.FindLogicalNode(preview, "dv1");
-                        documentViewer.Document = fixedDocumentSequence;
-                        
-                        preview.ShowDialog();
+                        // Read XPS document into dynamically generated preview window.
+                        using (var doc = new XpsDocument(tempFileName, FileAccess.Read))
+                        {
+                            documentViewer.Document = doc.GetFixedDocumentSequence();
+                        }
                     }
+                    preview.ShowDialog();
                 }
             }
             finally
