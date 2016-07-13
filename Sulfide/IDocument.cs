@@ -20,6 +20,8 @@ namespace Sulfide
 
         IPrintingStrategy PrintingStrategy { get; }
 
+        IHistoryStrategy HistoryStrategy { get; }
+
         string Text { get; set; }
 
         void Show(DockPanel dockPanel, DockState dockState);

@@ -37,6 +37,8 @@ namespace Sulfide
 
         public IPrintingStrategy PrintingStrategy { get; }
 
+        public IHistoryStrategy HistoryStrategy { get; }
+
         /// <summary>
         /// Initializes a new instance of a code document.
         /// </summary>
@@ -62,6 +64,7 @@ namespace Sulfide
             SaveStrategy = new CodeDocumentSaveStrategy(this);
             ClipboardStrategy = new CodeDocumentClipboardStrategy(this);
             PrintingStrategy = new CodeDocumentPrintingStrategy(this);
+            HistoryStrategy = new CodeDocumentHistoryStrategy(this);
         }
     }
 }

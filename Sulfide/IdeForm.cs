@@ -121,6 +121,11 @@ namespace Sulfide
             printPreviewToolStripMenuItem.Enabled = printingEnabled;
             printToolStripButton.Enabled = printingEnabled;
             printToolStripMenuItem.Enabled = printingEnabled;
+
+            // Enable or disable undo/redo.
+            var historyEnabled = ActiveDocument?.HistoryStrategy != null;
+            undoToolStripMenuItem.Enabled = historyEnabled;
+            redoToolStripMenuItem.Enabled = historyEnabled;
         }
 
         private void IdeForm_Load(object sender, EventArgs e)
@@ -206,6 +211,16 @@ namespace Sulfide
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActiveDocument.HistoryStrategy.Undo();
+        }
+
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActiveDocument.HistoryStrategy.Redo();
         }
     }
 }

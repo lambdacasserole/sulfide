@@ -69,6 +69,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CodeDocumentClipboardStrategy.cs" />
+    <Compile Include="CodeDocumentHistoryStrategy.cs" />
     <Compile Include="CodeDocumentPrintingStrategy.cs" />
     <Compile Include="CodeDocumentSaveStrategy.cs" />
     <Compile Include="IClipboardStrategy.cs" />
@@ -79,6 +80,7 @@
       <DependentUpon>IdeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="IDocument.cs" />
+    <Compile Include="IHistoryStrategy.cs" />
     <Compile Include="IPrintingStrategy.cs" />
     <Compile Include="ISaveStrategy.cs" />
     <Compile Include="Program.cs" />
