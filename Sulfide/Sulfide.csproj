@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\question-frame.png" />
     <Resource Include="Resources\logo.png" />
     <None Include="Resources\PreviewWindowXaml.txt" />
   </ItemGroup>

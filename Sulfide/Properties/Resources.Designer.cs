@@ -150,6 +150,16 @@ namespace Sulfide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap question_frame {
+            get {
+                object obj = ResourceManager.GetObject("question-frame", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap scissors {
             get {
                 object obj = ResourceManager.GetObject("scissors", resourceCulture);
