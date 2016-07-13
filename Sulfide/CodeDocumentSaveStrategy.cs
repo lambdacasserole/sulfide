@@ -4,10 +4,17 @@ using System.Windows.Forms;
 
 namespace Sulfide
 {
+    /// <summary>
+    /// Represents a save strategy designed for a <see cref="CodeDocument"/> editor.
+    /// </summary>
     public class CodeDocumentSaveStrategy : ISaveStrategy
     {
         private readonly CodeDocument _codeDocument;
 
+        /// <summary>
+        /// Initializes a new instance of a save strategy designed for a <see cref="CodeDocument"/> editor.
+        /// </summary>
+        /// <param name="codeDocument"></param>
         public CodeDocumentSaveStrategy(CodeDocument codeDocument)
         {
             _codeDocument = codeDocument;

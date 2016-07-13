@@ -1,15 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sulfide
 {
+    /// <summary>
+    /// Represents a printing strategy designed for a <see cref="CodeDocument"/> editor.
+    /// </summary>
     public class CodeDocumentPrintingStrategy : IPrintingStrategy
     {
         private CodeDocument _codeDocument;
 
+        /// <summary>
+        /// Initializes a new instance of a printing strategy designed for a <see cref="CodeDocument"/> editor.
+        /// </summary>
+        /// <param name="codeDocument"></param>
         public CodeDocumentPrintingStrategy(CodeDocument codeDocument)
         {
             _codeDocument = codeDocument;
