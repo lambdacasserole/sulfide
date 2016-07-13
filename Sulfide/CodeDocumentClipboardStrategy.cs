@@ -10,7 +10,7 @@
         /// <summary>
         /// Initialilzes a new instance of a clipboard strategy designed for a <see cref="CodeDocument"/> editor.
         /// </summary>
-        /// <param name="codeDocument"></param>
+        /// <param name="codeDocument">The document this strategy should act on.</param>
         public CodeDocumentClipboardStrategy(CodeDocument codeDocument)
         {
             _codeDocument = codeDocument;

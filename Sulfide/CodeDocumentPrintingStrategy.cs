@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Windows.Controls;
 using System.Windows.Documents;
-using System.Windows.Forms;
 
 namespace Sulfide
 {
@@ -10,12 +8,12 @@ namespace Sulfide
     /// </summary>
     public class CodeDocumentPrintingStrategy : IPrintingStrategy
     {
-        private CodeDocument _codeDocument;
+        private readonly CodeDocument _codeDocument;
 
         /// <summary>
         /// Initializes a new instance of a printing strategy designed for a <see cref="CodeDocument"/> editor.
         /// </summary>
-        /// <param name="codeDocument"></param>
+        /// <param name="codeDocument">The document this strategy should act on.</param>
         public CodeDocumentPrintingStrategy(CodeDocument codeDocument)
         {
             _codeDocument = codeDocument;
