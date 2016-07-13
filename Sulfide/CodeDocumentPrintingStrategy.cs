@@ -28,8 +28,15 @@ namespace Sulfide
 
         public void PrintPreview()
         {
-            var tempFileName = Path.GetRandomFileName();
+            // Prepare document for printing.
             var flowDocument = DocumentPrinter.CreateFlowDocumentForEditor(_codeDocument.Editor);
+            flowDocument.PageWidth = 8*96; // A4 paper size.
+            flowDocument.PageHeight = 11.5*96;
+            flowDocument.PagePadding = new Thickness(50);
+            flowDocument.ColumnGap = 0;
+            flowDocument.ColumnWidth = flowDocument.PageWidth;
+            
+            var tempFileName = Path.GetRandomFileName();
             var printable = (IDocumentPaginatorSource) flowDocument;
             try
             {
@@ -91,7 +98,7 @@ namespace Sulfide
             flowDocument.PageWidth = dialog.PrintableAreaWidth;
             flowDocument.PagePadding = new Thickness(50);
             flowDocument.ColumnGap = 0;
-            flowDocument.ColumnWidth = dialog.PrintableAreaWidth;
+            flowDocument.ColumnWidth = flowDocument.PageWidth;
 
             // Print document.
             var printable = (IDocumentPaginatorSource) flowDocument;
