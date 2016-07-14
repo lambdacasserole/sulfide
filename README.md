@@ -7,7 +7,7 @@ Sulfide is a starting point for developing your own IDE. All it really is is a t
 
 ## Acknowledgements
 
-The amazing Fugue icon pack by Yusuke Kamiyamane is used in this application and is licensed under the [Creative Commons Attribution 3.0](http://creativecommons.org/licenses/by/3.0/) license.
+The amazing [Fugue icon pack](http://p.yusukekamiyamane.com/) by Yusuke Kamiyamane is used in this application and is licensed under the [Creative Commons Attribution 3.0](http://creativecommons.org/licenses/by/3.0/) license.
 
 The awesome [DockPanel Suite](https://github.com/dockpanelsuite/dockpanelsuite) library is used for docking windows in the editor as well as the editor's MDI interface. It's licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
