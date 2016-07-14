@@ -68,6 +68,9 @@ namespace Sulfide
             ClipboardStrategy = new CodeDocumentClipboardStrategy(this);
             PrintingStrategy = new CodeDocumentPrintingStrategy(this);
             HistoryStrategy = new CodeDocumentHistoryStrategy(this);
+
+            // Allow float or document docking.
+            DockAreas = DockAreas.Document | DockAreas.Float;
         }
     }
 }
