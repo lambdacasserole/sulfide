@@ -5,6 +5,12 @@ Sulfide is a starting point for developing your own IDE. All it really is is a t
 
 ![Screenshot](https://github.com/lambdacasserole/sulfide/raw/master/Assets/screenshot.png)
 
+## Limitations
+
+Sulfide is not a text editor program or IDE by itself (like Notepad++ or Eclipse) but is designed as a starting point for building your own. Also, it is not built with any grand design patterns like dependency injection or MVC/MVVM. If you require a bit more structure in the IDE you're developing you it shouldn't be too difficult to add it in yourself. 
+
+If you're looking for something a bit grander, try [Gemini](https://github.com/tgjones/gemini). It's WPF (rather than WinForms based) but offers a whole bunch more structure and some awesome tools.
+
 ## Acknowledgements
 
 The amazing [Fugue icon pack](http://p.yusukekamiyamane.com/) by Yusuke Kamiyamane is used in this application and is licensed under the [Creative Commons Attribution 3.0](http://creativecommons.org/licenses/by/3.0/) license.
