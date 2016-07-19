@@ -11,6 +11,8 @@ Sulfide is not a text editor program or IDE by itself (like Notepad++ or Eclipse
 
 If you're looking for something a bit grander, try [Gemini](https://github.com/tgjones/gemini). It's WPF (rather than WinForms based) but offers a whole bunch more structure and some awesome tools.
 
+There are no tests of any kind in this whole project. It seems to work, make sure you write tests before shipping your own Sulfide-based IDE.
+
 ## Acknowledgements
 
 The amazing [Fugue icon pack](http://p.yusukekamiyamane.com/) by Yusuke Kamiyamane is used in this application and is licensed under the [Creative Commons Attribution 3.0](http://creativecommons.org/licenses/by/3.0/) license.
